@@ -100,6 +100,19 @@ html {
   width: 80%;
 }
 
+/* Navbar Toggler - visible in light mode and mobile */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+[data-theme="light"] .navbar-toggler {
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .navbar-toggler-icon {
+  filter: invert(1);
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
   background: var(--bg-secondary);
