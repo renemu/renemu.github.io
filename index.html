@@ -69,6 +69,12 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#tech-stack">Tech Stack</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#project">Projects</a>
             </li>
             <!-- <li class="nav-item">
@@ -102,7 +108,7 @@
             ><i class="fas fa-bolt me-1"></i>Electrical Engineering</span
           > -->
           <span class="badge-custom"
-            ><i class="fas fa-laptop-code me-1"></i>Software Engineering</span
+            ><i class="fas fa-laptop-code me-1"></i>Software Engineer | Fullstack Web &middot; IoT &middot; DevOps &amp; Infrastructure</span
           >
         </p>
         <div class="hero-icons">
@@ -137,70 +143,45 @@
             <div class="title-underline"></div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-md-12 mb-4">
-            <div class="about-card">
-              <div class="about-icon">
-                <i class="fas fa-laptop-code"></i>
-              </div>
-              <h4 class="mb-3">Software Engineering</h4>
-              <p>
-                Bachelor of Electrical Engineering graduate from Siliwangi
-                University with a concentration in Computer and Control Systems.
-                Has expertise in control and monitoring system design, system
-                architecture, system diagrams, wiring circuit design, IoT
-                technology, and programming using C++, C# and Python languages.
-                Experienced in integrating software with hardware for real-time
-                and non-real-time data processing. Skills in software and web
-                development have been developed since vocational school,
-                including developing desktop and web applications, designing
-                database structures, and creating application workflow schemes
-                that are designed, Accustomed to designing web applications
-                using the Laravel PHP framework and MySql (sql) database, as
-                well as desktop applications using Visual Studio (C++). Also
-                familiar with tools + AI (Claude, Gpt, Copilot, Cursor, VS Code,
-                Warp Terminal + Ai, Figma, DBEaver, Navicat, Git Fork/Cli).
-                deployment and server (Github Action CI/CD, Docker, Nginx,
-                Apache, Linux) Has a high interest in the world of technology
-                that encourages enthusiasm to continue to develop and advance to
-                face new challenges and adapt to the latest technological
-                developments.
-              </p>
-            </div>
-          </div>
-          <!-- <div class="col-md-5 mb-4">
-            <div class="about-card">
-              <div class="about-icon">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-              <h4 class="mb-3">Electrical Engineering</h4>
-              <p>
-                Expertise in electrical engineering with a concentration in
-                control of the 2023 graduates of the University of Siliwangi
-                Tasikmalaya. The research that has been carried out is entitled
-                "SEL VOLTAGE MONITORING SYSTEM WITH SWITCHING METHODS ON NI-CD
-                110V DC BATTERIES" as for the final study on campus.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-5 mb-4">
-            <div class="about-card">
-              <div class="about-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h4 class="mb-3">Software Engineering</h4>
-              <p>
-                Expertise in software engineering, namely the creation of
-                desktop and web-based applications, mastering the JS, PHP, C#,
-                HTML, CSS and Python programming languages. These skills are
-                obtained from junior high school until now.
-              </p>
-            </div>
-          </div> -->
+        <div id="about-container" class="row justify-content-center">
+          <!-- Content loaded from JSON -->
         </div>
       </div>
     </section>
     <!-- End About me -->
+
+    <!-- Tech Stack -->
+    <section id="tech-stack" style="background: var(--bg-primary); padding-top: 4rem; padding-bottom: 2rem;">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="title-underline"></div>
+          </div>
+        </div>
+        <div id="tech-stack-container" class="row justify-content-center text-center">
+          <!-- Content loaded from JSON -->
+        </div>
+      </div>
+    </section>
+    <!-- End Tech Stack -->
+
+    <!-- Experience -->
+    <section id="experience" style="background: var(--bg-secondary); padding-top: 6rem; padding-bottom: 6rem; position: relative;">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2 class="section-title">Experience</h2>
+            <div class="title-underline"></div>
+          </div>
+        </div>
+        <div id="experience-container" class="row justify-content-center">
+          <!-- Content loaded from JSON -->
+        </div>
+      </div>
+    </section>
+    <!-- End Experience -->
+
     <!-- Project -->
     <section id="project">
       <div class="container">
@@ -210,140 +191,27 @@
             <div class="title-underline"></div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/side.jpg"
-                  class="project-img"
-                  alt="side view"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  This is a project from my research results while on campus,
-                  with the research title "battery cell voltage balancing system
-                  with switching method using 110v dc ni-cd battery".
-                </p>
-              </div>
+        <!-- Filter Controls -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-8">
+            <div class="d-flex flex-column flex-md-row gap-3">
+              <input type="text" id="projectSearch" class="form-control custom-input" placeholder="Search projects by title, tech stack, or description...">
+              <select id="projectCategory" class="form-select custom-input" style="max-width: 250px;">
+                <option value="all">All Categories</option>
+                <!-- Options loaded by JS -->
+              </select>
             </div>
           </div>
-          <!-- <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/led.jpg"
-                  class="project-img"
-                  alt="relay and led"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  This is a 16-channel relay board with 2 selectors to read each
-                  of the 8 relay channel sections, with indicators in the form
-                  of green led lights for the selectors and red led lights for
-                  the 8 relay section selectors.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/up.jpg"
-                  class="project-img"
-                  alt="voltage monitoring"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  Monitoring the voltage of a 1.2V ni-cd cell battery with a
-                  cell reader controlled by an Arduino MEGA 2560 to a relay
-                  selector.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/lcd.jpg"
-                  class="project-img"
-                  alt="LCD display"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  The monitoring performed will be displayed on the screen in
-                  the form of cell number (#), cell voltage (V), cell status
-                  (!), total cell voltage, balancing status, cell charge
-                  current, and teg status.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/side.jpg"
-                  class="project-img"
-                  alt="side view"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  The cell battery condition is also sent to the internet as
-                  remote monitoring to make it easier for users when cell
-                  battery monitoring takes place.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <img
-                  src="assets/img/blynk.png"
-                  class="project-img"
-                  alt="blynk application"
-                />
-                <div class="project-overlay">
-                  <i class="fas fa-external-link-alt"></i>
-                </div>
-              </div>
-              <div class="project-content">
-                <p class="project-text">
-                  View of the blynk web application as online data monitoring.
-                </p>
-              </div>
-            </div>
-          </div> -->
         </div>
-      </div>
+        <!-- End Filter Controls -->
+        <div id="projects-container" class="row justify-content-center">
+          <!-- Content loaded from JSON -->
+        </div>      </div>
     </section>
     <!-- End Project -->
 
     <!-- Footer -->
-    <footer id="contact" class="footer-custom text-white text-center py-4">
+    <footer id="contact" class="footer-custom text-center py-4">
       <div class="container">
         <h3 class="mb-3">Get In Touch</h3>
         <p class="mb-4">Let's connect and collaborate!</p>
@@ -377,7 +245,7 @@
           <a
             href="https://www.instagram.com/tuan_zuli/"
             target="_blank"
-            class="text-white fw-bold footer-link"
+            class="fw-bold footer-link"
             >Muhammad Rifki Zulfikar.</a
           >
           All rights reserved.
@@ -396,6 +264,7 @@
     ></script>
 
     <!-- Custom JavaScript -->
+    <script src="data.js"></script>
     <script src="script.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->

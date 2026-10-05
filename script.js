@@ -83,3 +83,181 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+
+  // ===== Render Data =====
+  if (typeof portfolioData !== 'undefined') {
+    renderAbout(portfolioData.about);
+    renderTechStack(portfolioData.tech_stack);
+    renderExperience(portfolioData.experience);
+    renderProjects(portfolioData.projects);
+    initProjectFilters(portfolioData.projects);
+  } else {
+    console.error('Data not found! Make sure data.js is loaded.');
+  }
+
+  function initProjectFilters(projects) {
+    const categorySelect = document.getElementById('projectCategory');
+    const searchInput = document.getElementById('projectSearch');
+    
+    if (!categorySelect || !searchInput) return;
+
+    // Populate categories
+    const categories = new Set(projects.map(p => p.category));
+    categories.forEach(cat => {
+      const option = document.createElement('option');
+      option.value = cat;
+      option.textContent = cat;
+      categorySelect.appendChild(option);
+    });
+
+    // Filter function
+    function filterProjects() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categorySelect.value;
+
+      const filtered = projects.filter(p => {
+        const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
+        const matchesSearch = p.title.toLowerCase().includes(searchTerm) || 
+                              p.techStack.toLowerCase().includes(searchTerm) || 
+                              p.description.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+
+      renderProjects(filtered);
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', filterProjects);
+    categorySelect.addEventListener('change', filterProjects);
+  }
+
+  function renderAbout(about) {
+    const container = document.getElementById('about-container');
+    if (!container) return;
+
+    let html = `
+      <div class="col-md-12 mb-4">
+        <div class="about-card" style="text-align: left;">
+    `;
+    
+    about.paragraphs.forEach(p => {
+      html += `<p>${p}</p>`;
+    });
+    
+    html += `
+          <br/>
+          <h5 style="font-weight: 600; color: var(--text-primary);">Core Competencies:</h5>
+          <ul>
+    `;
+    
+    about.core_competencies.forEach(comp => {
+      html += `
+            <li style="margin-bottom: 0.5rem;">
+              <strong>${comp.title}:</strong> ${comp.description}
+            </li>
+      `;
+    });
+    
+    html += `
+          </ul>
+          <br/>
+          <p>
+            I am driven by a passion for solving complex technical challenges, adapting to new technologies, and building systems that are both reliable and scalable.
+          </p>
+        </div>
+      </div>
+    `;
+    
+    container.innerHTML = html;
+  }
+
+  function renderTechStack(techStack) {
+    const container = document.getElementById('tech-stack-container');
+    if (!container) return;
+
+    let html = `
+      <div class="col-md-10">
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+    `;
+    
+    techStack.forEach(tech => {
+      html += `<span class="badge bg-${tech.style} fs-6 py-2 px-3 mb-2"><i class="${tech.icon} me-1"></i>${tech.name}</span>`;
+    });
+    
+    html += `
+        </div>
+      </div>
+    `;
+    
+    container.innerHTML = html;
+  }
+
+  function renderExperience(experiences) {
+    const container = document.getElementById('experience-container');
+    if (!container) return;
+
+    let html = `
+      <div class="col-md-10">
+        <div class="timeline" style="border-left: 2px solid var(--accent-color); padding-left: 2rem; margin-left: 1rem;">
+    `;
+    
+    experiences.forEach((exp, index) => {
+      const isLast = index === experiences.length - 1;
+      html += `
+          <div class="timeline-item mb-${isLast ? '4' : '5'}" style="position: relative;">
+            <span class="timeline-icon" style="position: absolute; left: -2.35rem; top: 0.3rem; background: var(--accent-color); color: white; width: 12px; height: 12px; border-radius: 50%;"></span>
+            <h4 class="fw-bold mb-1">${exp.title}</h4>
+            <h5 class="text-muted mb-2">${exp.company} &middot; ${exp.type}</h5>
+            <p class="small text-muted mb-3"><i class="fas fa-calendar-alt me-2"></i>${exp.date} &nbsp;|&nbsp; <i class="fas fa-map-marker-alt me-2"></i>${exp.location}</p>
+            <p>${exp.description}</p>
+            <p class="small text-muted mt-2"><strong>Skills:</strong> ${exp.skills}</p>
+          </div>
+      `;
+    });
+    
+    html += `
+        </div>
+      </div>
+    `;
+    
+    container.innerHTML = html;
+  }
+
+  function renderProjects(projects) {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    let html = '';
+    
+    if (projects.length === 0) {
+      html = '<div class="col-12 text-center text-muted my-5"><h5>No projects found matching your criteria.</h5></div>';
+    }
+    
+    projects.forEach(p => {
+      let linkAttr = p.link ? `href="${p.link}" target="_blank"` : `href="javascript:void(0)" style="cursor: default;"`;
+      html += `
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="project-card h-100">
+            <a ${linkAttr} class="text-decoration-none text-reset d-block h-100">
+              <div class="project-img-wrapper">
+                <img src="${p.image}" class="project-img" alt="${p.title}" />
+                ${p.link ? `<div class="project-overlay"><i class="fas fa-external-link-alt"></i></div>` : ''}
+              </div>
+              <div class="project-content d-flex flex-column text-center">
+                <div class="mb-2">
+                  <span class="badge bg-primary me-1 mb-1">${p.year}</span>
+                  <span class="badge bg-secondary me-1 mb-1">${p.category}</span>
+                  <span class="badge bg-info text-dark me-1 mb-1">${p.role}</span>
+                </div>
+                <h5 class="fw-bold mb-2">${p.title}</h5>
+                <div class="mb-3"><span class="badge bg-dark me-1"><i class="fas fa-layer-group me-1"></i>${p.techStack}</span></div>
+                <p class="project-text mt-auto">${p.description}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
+  }
