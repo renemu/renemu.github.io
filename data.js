@@ -332,12 +332,12 @@ const portfolioData = {
       category: "Desktop Application",
       year: "2026",
       role: "Fullstack Developer",
-      techStack: "Electron Js (Vue), Sql Lite",
+      techStack: "Electron Js (Vue), Typescript, Sql Lite",
       link: null,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWlOlbQ3ZRk8pUomwow5T_ORUo6LvAQqBah9Z7q10EKlbWzp1wEcaR03s&s=10",
       description:
-        "Desktop photobooth application developed using Electron.js with Vue and SQLite.",
+        "Desktop photobooth application developed using Electron.js Desktop app + Vue 3 + TypeScript.",
     },
     {
       title: "ADMIN BOOTH",
