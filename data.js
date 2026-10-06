@@ -412,4 +412,112 @@ const portfolioData = {
         "Scouts camp application developed using Nuxt 3 and TypeScript.",
     },
   ],
+
+  "infrastructure": [
+    {
+      "slug": "large-file-upload",
+      "title": "Large File Upload Infrastructure",
+      "category": "Networking / Infrastructure",
+      "summary": "Redesigned the application ingress architecture to support Laravel file uploads up to 500 MB while keeping the main application infrastructure on a private self-hosted server.",
+      "technologies": ["Laravel", "MinIO", "Ubuntu Server", "Docker", "VPS", "Nginx Proxy Manager", "NetBird", "Cloudflare"],
+      "overview": "The Laravel application required file uploads up to approximately 500 MB. The previous deployment path used Cloudflare proxied infrastructure, creating a request-size bottleneck before large requests reached the application.",
+      "challenge": [
+        "Cloudflare's free/pro tiers limit upload request sizes, causing 413 Payload Too Large errors.",
+        "Application-level chunking would require additional upload-session handling, chunk reconstruction, retries, and application-level complexity.",
+        "The primary application server needed to remain secure and private without being fully exposed to the public internet."
+      ],
+      "solution": [
+        "Introduced a lightweight VPS with a public static IP as the ingress gateway.",
+        "Configured Cloudflare for DNS only (unproxied) to bypass the file size limit.",
+        "Deployed Nginx Proxy Manager on the VPS to handle SSL and reverse proxying.",
+        "Established a NetBird VPN tunnel between the public VPS and the private ASUS application server."
+      ],
+      "architecture": {
+        "mobile": ["Cloudflare DNS", "Public VPS", "Nginx Proxy Manager", "NetBird VPN", "ASUS Ubuntu Server", "Laravel & MinIO"],
+        "desktop": ["Cloudflare DNS", "Public VPS\n(Nginx)", "NetBird VPN", "Private Server\n(Laravel / MinIO)"]
+      },
+      "result": [
+        "Large uploads could reach the Laravel application reliably.",
+        "Bypassed the previous Cloudflare request-size bottleneck without implementing complex application-level chunking.",
+        "The application server remained completely isolated within a private network."
+      ],
+      "responsibilities": [
+        "Analyzing the upload bottleneck and investigating Cloudflare limits.",
+        "Designing the ingress architecture to securely bridge the public VPS and private server.",
+        "Configuring NetBird for the secure tunnel.",
+        "Deploying and configuring Nginx Proxy Manager."
+      ]
+    },
+    {
+      "slug": "centralized-multi-app-cicd",
+      "title": "Centralized Multi-App CI/CD",
+      "category": "CI/CD / Automation",
+      "summary": "Built a centralized Jenkins environment to monitor and orchestrate deployments across multiple repositories and application servers.",
+      "technologies": ["Jenkins", "Git", "GitHub", "Linux", "Docker", "Jenkins Agent", "CI/CD"],
+      "overview": "Managing approximately 3–10 application repositories meant checking each repository's independent CI/CD workflow and build status individually. Monitoring concurrent deployments became increasingly difficult.",
+      "challenge": [
+        "Decentralized CI/CD pipelines across multiple repositories.",
+        "No single dashboard to monitor the status of all concurrent deployments.",
+        "Redundant configuration required for similar deployment workflows."
+      ],
+      "solution": [
+        "Installed Jenkins on a VPS as a centralized CI/CD controller.",
+        "Connected multiple repositories using secured Git/SSH credentials.",
+        "Installed Jenkins agents on target application servers to run deployment workloads locally.",
+        "Configured Jenkins Build Monitor to provide a centralized view of all pipelines."
+      ],
+      "architecture": {
+        "mobile": ["Git Repositories", "Jenkins Controller", "Jenkins Agents", "Docker Deployments"],
+        "desktop": ["Git Repositories", "Jenkins Controller\n(Build Monitor)", "Agent Servers\n(A / B / C)", "Docker / Apps"]
+      },
+      "result": [
+        "Multiple application builds and deployments could be monitored from one unified dashboard.",
+        "Reduced time spent checking individual repositories.",
+        "Standardized the deployment orchestration process across projects."
+      ],
+      "futureImprovements": [
+        "Replace SCM polling with Git webhooks so pipelines start immediately when new commits are pushed."
+      ],
+      "responsibilities": [
+        "Setting up and securing the Jenkins Controller.",
+        "Configuring Jenkins Agents on multiple application servers.",
+        "Writing and managing Jenkinsfiles for the deployment pipelines.",
+        "Integrating Git repositories and setting up Build Monitor."
+      ]
+    },
+    {
+      "slug": "linux-hosting-migration",
+      "title": "Linux Hosting Migration",
+      "category": "Linux / Hosting",
+      "summary": "Migrated multiple PHP applications from a Windows-based local hosting environment into a dedicated Ubuntu Server environment while preserving a familiar cPanel-style workflow.",
+      "technologies": ["Ubuntu Server", "aaPanel", "Nginx", "PHP", "Laravel", "CodeIgniter 4", "MySQL", "Cloudflare Tunnel", "Tailscale"],
+      "overview": "Applications were running directly on a Windows laptop (via XAMPP/Laravel Herd) that was also used for daily desktop work. As traffic increased, workloads competed for resources. The goal was to migrate to a dedicated Linux environment while keeping management easy.",
+      "challenge": [
+        "Desktop workloads and server workloads competing for system resources.",
+        "Need for a dedicated hosting environment without a steep Linux administration learning curve.",
+        "Ensuring both public access for the applications and secure remote access for the developer."
+      ],
+      "solution": [
+        "Configured an MSI laptop with a dual boot (Windows for desktop, Ubuntu Server for hosting).",
+        "Installed aaPanel to provide a familiar cPanel-style management interface.",
+        "Set up the LEMP stack (Nginx, PHP, MySQL, phpMyAdmin) via aaPanel.",
+        "Configured Cloudflare Tunnel for public access and Tailscale for private developer access."
+      ],
+      "architecture": {
+        "mobile": ["Cloudflare Tunnel", "Ubuntu Server", "aaPanel (LEMP)", "PHP Applications", "Tailscale", "Developer Laptop"],
+        "desktop": ["Internet / Cloudflare", "Ubuntu Server\n(aaPanel / LEMP)", "PHP Apps\n(Laravel / CI4)", "Tailscale\n(Dev Laptop)"]
+      },
+      "result": [
+        "Created a dedicated Linux-based hosting environment, freeing up Windows desktop resources.",
+        "Maintained a familiar hosting-management experience using aaPanel.",
+        "Achieved secure public application access alongside private remote development capabilities."
+      ],
+      "responsibilities": [
+        "Installing and configuring Ubuntu Server.",
+        "Setting up aaPanel and the underlying web stack.",
+        "Migrating Laravel and CodeIgniter 4 applications to the new environment.",
+        "Configuring Cloudflare Tunnels and Tailscale networks."
+      ]
+    }
+  ]
 };
