@@ -109,7 +109,7 @@ const portfolioData = {
       description:
         "Responsible for software design, architecture, and end-to-end development. Collaborating with cross-functional teams to build scalable solutions for internal systems, focusing on performance optimization and reliable deployments.",
       skills:
-        "Software Design, Software Development, System Architecture, Infrastructure, Server, Database Management, API Integration",
+        "Software Design, Software Development, System Architecture, Infrastructure, Server, Devops, Database Management, API Integration",
     },
     {
       title: "Frontend Developer",
@@ -332,12 +332,12 @@ const portfolioData = {
       category: "Desktop Application",
       year: "2026",
       role: "Fullstack Developer",
-      techStack: "Electron Js (Vue), Sql Lite",
+      techStack: "Electron Js (Vue), Typescript, Sql Lite",
       link: null,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWlOlbQ3ZRk8pUomwow5T_ORUo6LvAQqBah9Z7q10EKlbWzp1wEcaR03s&s=10",
       description:
-        "Desktop photobooth application developed using Electron.js with Vue and SQLite.",
+        "Desktop photobooth application developed using Electron.js Desktop app + Vue 3 + TypeScript.",
     },
     {
       title: "ADMIN BOOTH",
@@ -345,7 +345,7 @@ const portfolioData = {
       year: "2026",
       role: "Fullstack Developer",
       techStack: "Laravel 13 Shadcn Vue, Mysql, Api",
-      link: "https://dev-booth.lokalinstudio.id",
+      link: "https://rebooth.renemu.com",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWlOlbQ3ZRk8pUomwow5T_ORUo6LvAQqBah9Z7q10EKlbWzp1wEcaR03s&s=10",
       description:
