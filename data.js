@@ -109,7 +109,7 @@ const portfolioData = {
       description:
         "Responsible for software design, architecture, and end-to-end development. Collaborating with cross-functional teams to build scalable solutions for internal systems, focusing on performance optimization and reliable deployments.",
       skills:
-        "Software Design, Software Development, System Architecture, Infrastructure, Server, Database Management, API Integration",
+        "Software Design, Software Development, System Architecture, Infrastructure, Server, Devops, Database Management, API Integration",
     },
     {
       title: "Frontend Developer",
