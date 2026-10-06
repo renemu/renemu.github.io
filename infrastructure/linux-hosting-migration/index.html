@@ -41,7 +41,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../style.css" />
 
-    <title>Linux Hosting Migration | Infrastructure | Muhammad Rifki Zulfikar</title>
+    <title>Linux Hosting Migration | Infrastructure</title>
   
     <style>
       body { padding-top: 76px; background: var(--bg-primary); }
@@ -50,45 +50,10 @@
       .case-study-content h2, .case-study-content h3 { color: var(--text-primary); font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
       .case-study-content ul { padding-left: 1.2rem; }
       .case-study-content li { margin-bottom: 0.5rem; }
-      
-      /* Architecture Diagram CSS */
-      .arch-diagram {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-        background: var(--bg-card);
-        padding: 2rem;
-        border-radius: 10px;
-        border: 1px solid var(--border-color);
-        margin: 2rem 0;
-        font-family: monospace;
-      }
-      .arch-node {
-        background: var(--bg-secondary);
-        padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        border: 1px solid var(--accent-color);
-        color: var(--text-primary);
-        text-align: center;
-        width: 100%;
-        max-width: 300px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      .arch-arrow {
-        color: var(--text-secondary);
-        font-size: 1.5rem;
-      }
-      @media(min-width: 768px) {
-        .arch-diagram.row-layout {
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .arch-arrow.row-layout {
-          transform: rotate(-90deg);
-        }
-      }
+      .arch-diagram { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; background: var(--bg-card); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 2rem 0; font-family: monospace; }
+      .arch-node { background: var(--bg-secondary); padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid var(--accent-color); color: var(--text-primary); text-align: center; width: 100%; max-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+      .arch-arrow { color: var(--text-secondary); font-size: 1.5rem; }
+      @media(min-width: 768px) { .arch-diagram.row-layout { flex-direction: row; flex-wrap: wrap; justify-content: center; } }
     </style>
   </head>
   <body id="home" data-theme="dark">
@@ -142,54 +107,13 @@
     </nav>
     
     <!--End Navbar-->
-
-    
-    <section class="case-study-hero">
-      <div class="container">
-        <a href="../index.html" class="text-decoration-none mb-4 d-inline-block" style="color: var(--accent-color);">&larr; Back to Infrastructure</a>
-        <div class="mb-3">
-          <span class="badge bg-primary px-3 py-2 fs-6">Linux / Hosting</span>
-        </div>
-        <h1 class="display-4 fw-bold" style="color: var(--text-primary);">Linux Hosting Migration</h1>
-        <p class="lead mt-3" style="max-width: 800px; color: var(--text-secondary);">Migrated multiple PHP applications from a Windows-based local hosting environment into a dedicated Ubuntu Server environment while preserving a familiar cPanel-style workflow.</p>
-        
-        <div class="mt-4">
-          <h5 class="mb-3" style="color: var(--text-primary); font-weight: 600;">Technologies Used:</h5>
-          <span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Ubuntu Server</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">aaPanel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Nginx</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">PHP</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Laravel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">CodeIgniter 4</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">MySQL</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Cloudflare Tunnel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Tailscale</span>
-        </div>
-      </div>
-    </section>
-    
-    <section class="case-study-content">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            
-            <h3 class="mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Overview</h3>
-            <p>Applications were running directly on a Windows laptop (via XAMPP/Laravel Herd) that was also used for daily desktop work. As traffic increased, workloads competed for resources. The goal was to migrate to a dedicated Linux environment while keeping management easy.</p>
-            
-            <h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Challenge & Existing Condition</h3>
-            <ul><li>Desktop workloads and server workloads competing for system resources.</li><li>Need for a dedicated hosting environment without a steep Linux administration learning curve.</li><li>Ensuring both public access for the applications and secure remote access for the developer.</li></ul>
-            
-            <h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Engineering Decision & Solution</h3>
-            <ul><li>Configured an MSI laptop with a dual boot (Windows for desktop, Ubuntu Server for hosting).</li><li>Installed aaPanel to provide a familiar cPanel-style management interface.</li><li>Set up the LEMP stack (Nginx, PHP, MySQL, phpMyAdmin) via aaPanel.</li><li>Configured Cloudflare Tunnel for public access and Tailscale for private developer access.</li></ul>
-            
-            
-      <h3 class="mt-5 mb-4 border-bottom pb-2">Architecture</h3>
-      <div class="d-none d-md-flex arch-diagram row-layout">
-        <div class="arch-node">Internet / Cloudflare</div>
+    <section class="case-study-hero"><div class="container"><a href="../index.html" class="text-decoration-none mb-4 d-inline-block" style="color: var(--accent-color);">&larr; Back to Infrastructure</a><div class="mb-3"><span class="badge bg-primary px-3 py-2 fs-6">Linux / Hosting</span></div><h1 class="display-4 fw-bold" style="color: var(--text-primary);">Linux Hosting Migration</h1><p class="lead mt-3" style="max-width: 800px; color: var(--text-secondary);">Migrated multiple PHP applications from a Windows-based local hosting environment into a dedicated Ubuntu Server environment while preserving a familiar cPanel-style workflow.</p><div class="mt-4"><h5 class="mb-3" style="color: var(--text-primary); font-weight: 600;">Technologies Used:</h5><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Ubuntu Server</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">aaPanel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Nginx</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">PHP</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Laravel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">CodeIgniter 4</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">MySQL</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Cloudflare Tunnel</span><span class="badge bg-dark me-2 mb-2 px-3 py-2 border border-secondary" style="font-size: 0.9rem;">Tailscale</span></div></div></section><section class="case-study-content"><div class="container"><div class="row justify-content-center"><div class="col-lg-8"><h3 class="mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Overview</h3><p>Applications were running directly on a Windows laptop (via XAMPP/Laravel Herd) that was also used for daily desktop work. As traffic increased, workloads competed for resources. The goal was to migrate to a dedicated Linux environment while keeping management easy.</p><h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Challenge & Existing Condition</h3><ul><li>Desktop workloads and server workloads competing for system resources.</li><li>Need for a dedicated hosting environment without a steep Linux administration learning curve.</li><li>Ensuring both public access for the applications and secure remote access for the developer.</li></ul><h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Engineering Decision & Solution</h3><ul><li>Configured an MSI laptop with a dual boot (Windows for desktop, Ubuntu Server for hosting).</li><li>Installed aaPanel to provide a familiar cPanel-style management interface.</li><li>Set up the LEMP stack (Nginx, PHP, MySQL, phpMyAdmin) via aaPanel.</li><li>Configured Cloudflare Tunnel for public access and Tailscale for private developer access.</li></ul><h3 class="mt-5 mb-4 border-bottom pb-2" style="border-color: var(--border-color) !important;">Architecture</h3><div class="d-none d-md-flex arch-diagram row-layout"><div class="arch-node">Internet / Cloudflare</div>
 <div class="arch-arrow row-layout">&rarr;</div>
-<div class="arch-node">Ubuntu Server
-(aaPanel / LEMP)</div>
+<div class="arch-node">Ubuntu Server<br/>(aaPanel / LEMP)</div>
 <div class="arch-arrow row-layout">&rarr;</div>
-<div class="arch-node">PHP Apps
-(Laravel / CI4)</div>
+<div class="arch-node">PHP Apps<br/>(Laravel / CI4)</div>
 <div class="arch-arrow row-layout">&rarr;</div>
-<div class="arch-node">Tailscale
-(Dev Laptop)</div>
-      </div>
-      <div class="d-flex d-md-none arch-diagram">
-        <div class="arch-node">Cloudflare Tunnel</div>
+<div class="arch-node">Tailscale<br/>(Dev Laptop)</div></div><div class="d-flex d-md-none arch-diagram"><div class="arch-node">Cloudflare Tunnel</div>
 <div class="arch-arrow">&darr;</div>
 <div class="arch-node">Ubuntu Server</div>
 <div class="arch-arrow">&darr;</div>
@@ -199,24 +123,7 @@
 <div class="arch-arrow">&darr;</div>
 <div class="arch-node">Tailscale</div>
 <div class="arch-arrow">&darr;</div>
-<div class="arch-node">Developer Laptop</div>
-      </div>
-    
-            
-            <h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Implementation & Responsibilities</h3>
-            <ul><li>Installing and configuring Ubuntu Server.</li><li>Setting up aaPanel and the underlying web stack.</li><li>Migrating Laravel and CodeIgniter 4 applications to the new environment.</li><li>Configuring Cloudflare Tunnels and Tailscale networks.</li></ul>
-            
-            <h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Result</h3>
-            <ul><li>Created a dedicated Linux-based hosting environment, freeing up Windows desktop resources.</li><li>Maintained a familiar hosting-management experience using aaPanel.</li><li>Achieved secure public application access alongside private remote development capabilities.</li></ul>
-            
-            
-            
-          </div>
-        </div>
-      </div>
-    </section>
-  
-
+<div class="arch-node">Developer Laptop</div></div><h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Implementation & Responsibilities</h3><ul><li>Installing and configuring Ubuntu Server.</li><li>Setting up aaPanel and the underlying web stack.</li><li>Migrating Laravel and CodeIgniter 4 applications to the new environment.</li><li>Configuring Cloudflare Tunnels and Tailscale networks.</li></ul><h3 class="mt-5 mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important;">Result</h3><ul><li>Created a dedicated Linux-based hosting environment, freeing up Windows desktop resources.</li><li>Maintained a familiar hosting-management experience using aaPanel.</li><li>Achieved secure public application access alongside private remote development capabilities.</li></ul></div></div></div></section>
     <!-- Footer -->
     
     <footer id="contact" class="footer-custom text-center py-4">
@@ -262,7 +169,6 @@
     </footer>
     
     <!-- End Footer -->
-
     
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

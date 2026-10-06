@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="description" content="Infrastructure, CI/CD, Linux, networking, Docker, VPN, reverse proxy, and self-hosted engineering case studies by Muhammad Rifki Zulfikar." />
+    <meta name="description" content="Infrastructure engineering case studies." />
     <meta
       name="keywords"
       content="Portfolio, Muhammad Rifki Zulfikar, Electrical Engineering, Software Engineering, Arduino, Blynk, IoT"
@@ -50,45 +50,10 @@
       .case-study-content h2, .case-study-content h3 { color: var(--text-primary); font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
       .case-study-content ul { padding-left: 1.2rem; }
       .case-study-content li { margin-bottom: 0.5rem; }
-      
-      /* Architecture Diagram CSS */
-      .arch-diagram {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-        background: var(--bg-card);
-        padding: 2rem;
-        border-radius: 10px;
-        border: 1px solid var(--border-color);
-        margin: 2rem 0;
-        font-family: monospace;
-      }
-      .arch-node {
-        background: var(--bg-secondary);
-        padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        border: 1px solid var(--accent-color);
-        color: var(--text-primary);
-        text-align: center;
-        width: 100%;
-        max-width: 300px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      .arch-arrow {
-        color: var(--text-secondary);
-        font-size: 1.5rem;
-      }
-      @media(min-width: 768px) {
-        .arch-diagram.row-layout {
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .arch-arrow.row-layout {
-          transform: rotate(-90deg);
-        }
-      }
+      .arch-diagram { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; background: var(--bg-card); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 2rem 0; font-family: monospace; }
+      .arch-node { background: var(--bg-secondary); padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid var(--accent-color); color: var(--text-primary); text-align: center; width: 100%; max-width: 300px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+      .arch-arrow { color: var(--text-secondary); font-size: 1.5rem; }
+      @media(min-width: 768px) { .arch-diagram.row-layout { flex-direction: row; flex-wrap: wrap; justify-content: center; } }
     </style>
   </head>
   <body id="home" data-theme="dark">
@@ -142,74 +107,7 @@
     </nav>
     
     <!--End Navbar-->
-
-    
-    <section class="case-study-hero text-center">
-      <div class="container">
-        <h1 class="display-4 fw-bold" style="color: var(--text-primary);">Infrastructure & DevOps</h1>
-        <p class="lead mt-3 mx-auto" style="max-width: 800px; color: var(--text-secondary);">
-          Systems, deployment workflows, and infrastructure architectures I designed to solve real operational problems.
-        </p>
-      </div>
-    </section>
-    
-    <section style="padding: 4rem 0;">
-      <div class="container">
-        <div class="row justify-content-center">
-
-          <div class="col-lg-10 mb-5">
-            <div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);">
-              <div class="mb-2">
-                <span class="badge bg-secondary mb-2">NETWORKING / INFRASTRUCTURE</span>
-              </div>
-              <h3 class="fw-bold mb-3" style="color: var(--text-primary);">Large File Upload Infrastructure</h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Redesigned the application ingress architecture to support Laravel file uploads up to 500 MB while keeping the main application infrastructure on a private self-hosted server.</p>
-              <div class="mb-4 mt-2">
-                <span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Laravel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>MinIO</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Ubuntu Server</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Docker</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>VPS</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Nginx Proxy Manager</span><span class="badge bg-secondary me-1 mb-1">+2 more</span>
-              </div>
-              <div class="mt-auto">
-                <a href="large-file-upload/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-10 mb-5">
-            <div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);">
-              <div class="mb-2">
-                <span class="badge bg-secondary mb-2">CI/CD / AUTOMATION</span>
-              </div>
-              <h3 class="fw-bold mb-3" style="color: var(--text-primary);">Centralized Multi-App CI/CD</h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Built a centralized Jenkins environment to monitor and orchestrate deployments across multiple repositories and application servers.</p>
-              <div class="mb-4 mt-2">
-                <span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Jenkins</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Git</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>GitHub</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Linux</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Docker</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Jenkins Agent</span><span class="badge bg-secondary me-1 mb-1">+1 more</span>
-              </div>
-              <div class="mt-auto">
-                <a href="centralized-multi-app-cicd/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-10 mb-5">
-            <div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);">
-              <div class="mb-2">
-                <span class="badge bg-secondary mb-2">LINUX / HOSTING</span>
-              </div>
-              <h3 class="fw-bold mb-3" style="color: var(--text-primary);">Linux Hosting Migration</h3>
-              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Migrated multiple PHP applications from a Windows-based local hosting environment into a dedicated Ubuntu Server environment while preserving a familiar cPanel-style workflow.</p>
-              <div class="mb-4 mt-2">
-                <span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Ubuntu Server</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>aaPanel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Nginx</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>PHP</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Laravel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>CodeIgniter 4</span><span class="badge bg-secondary me-1 mb-1">+3 more</span>
-              </div>
-              <div class="mt-auto">
-                <a href="linux-hosting-migration/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a>
-              </div>
-            </div>
-          </div>
-  
-        </div>
-      </div>
-    </section>
-
-
+    <section class="case-study-hero text-center"><div class="container"><h1 class="display-4 fw-bold" style="color: var(--text-primary);">Infrastructure & DevOps</h1><p class="lead mt-3 mx-auto" style="max-width: 800px; color: var(--text-secondary);">Systems, deployment workflows, and infrastructure architectures I designed to solve real operational problems.</p></div></section><section style="padding: 4rem 0;"><div class="container"><div class="row justify-content-center"><div class="col-lg-10 mb-5"><div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);"><div class="mb-2"><span class="badge bg-secondary mb-2">NETWORKING / INFRASTRUCTURE</span></div><h3 class="fw-bold mb-3" style="color: var(--text-primary);">Large File Upload Infrastructure</h3><p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Redesigned the application ingress architecture to support Laravel file uploads up to 500 MB while keeping the main application infrastructure on a private self-hosted server.</p><div class="mb-4 mt-2"><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Laravel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>MinIO</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Ubuntu Server</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Docker</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>VPS</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Nginx Proxy Manager</span><span class="badge bg-secondary me-1 mb-1">+2 more</span></div><div class="mt-auto"><a href="large-file-upload/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a></div></div></div><div class="col-lg-10 mb-5"><div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);"><div class="mb-2"><span class="badge bg-secondary mb-2">CI/CD / AUTOMATION</span></div><h3 class="fw-bold mb-3" style="color: var(--text-primary);">Centralized Multi-App CI/CD</h3><p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Built a centralized Jenkins environment to monitor and orchestrate deployments across multiple repositories and application servers.</p><div class="mb-4 mt-2"><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Jenkins</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Git</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>GitHub</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Linux</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Docker</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Jenkins Agent</span><span class="badge bg-secondary me-1 mb-1">+1 more</span></div><div class="mt-auto"><a href="centralized-multi-app-cicd/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a></div></div></div><div class="col-lg-10 mb-5"><div class="project-card d-flex flex-column" style="padding: 2.5rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);"><div class="mb-2"><span class="badge bg-secondary mb-2">LINUX / HOSTING</span></div><h3 class="fw-bold mb-3" style="color: var(--text-primary);">Linux Hosting Migration</h3><p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">Migrated multiple PHP applications from a Windows-based local hosting environment into a dedicated Ubuntu Server environment while preserving a familiar cPanel-style workflow.</p><div class="mb-4 mt-2"><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Ubuntu Server</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>aaPanel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Nginx</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>PHP</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>Laravel</span><span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>CodeIgniter 4</span><span class="badge bg-secondary me-1 mb-1">+3 more</span></div><div class="mt-auto"><a href="linux-hosting-migration/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none; font-size: 1.1rem;">View Case Study &rarr;</a></div></div></div></div></div></section>
     <!-- Footer -->
     
     <footer id="contact" class="footer-custom text-center py-4">
@@ -255,7 +153,6 @@
     </footer>
     
     <!-- End Footer -->
-
     
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
