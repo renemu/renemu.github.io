@@ -102,24 +102,24 @@ const portfolioData = {
   experience: [
     {
       title: "Software Engineer",
-      company: "ASA Indonesia",
+      company: "PT. Adanu Adhinata Semesta",
       type: "Contract",
-      date: "Nov 2025 - Present · 1 yr",
+      date: "Sep 2025 - Present · 1 yr 2 mos",
       location: "Kota Yogyakarta, Indonesia (On-site)",
       description:
-        "Responsible for software design, architecture, and end-to-end development. Collaborating with cross-functional teams to build scalable solutions for internal systems, focusing on performance optimization and reliable deployments.",
+        "Develop and maintain enterprise applications (Employee, Marketing Sales, Tracking) on a Laravel, Vue.js, TypeScript, Queue, RabbitMQ, and MySQL/MariaDB monolith stack. Containerize and deploy applications with Docker, design CI/CD workflows with GitHub Actions and Jenkins, configure Nginx reverse proxy, domains, SSL, and VPS networking, and manage Linux servers, databases, and production maintenance.",
       skills:
-        "Software Design, Software Development, System Architecture, Infrastructure, Server, Devops, Database Management, API Integration",
+        "Laravel, Vue.js, TypeScript, RabbitMQ, MySQL/MariaDB, Docker, GitHub Actions, Jenkins, Nginx, Linux Server Administration",
     },
     {
-      title: "Frontend Developer",
+      title: "Frontend Web Developer",
       company: "PT. Gawe Becik Nadhah Anugrah (GENAH)",
       type: "Contract",
-      date: "Apr 2024 - Nov 2025 · 1 yr 8 mos",
+      date: "Apr 2024 - Sep 2025 · 1 yr 6 mos",
       location: "Yogyakarta, Indonesia (On-site)",
       description:
-        "Positioned primarily as a Front-end Developer with involvement in backend integrations. Designed and built intuitive user interfaces with a focus on user experience, system performance, and modern web standards using Vue.js.",
-      skills: "Vue.js, Next.js, Laravel, MySQL",
+        "Developed and maintained enterprise applications including CRM, Asset Management, and Advertiser Management systems using Laravel, Vue.js, and MySQL. Built and deployed a responsive Progressive Web App (PWA) for an E-Commerce platform using Next.js, and integrated front-end components with back-end APIs.",
+      skills: "Vue.js, Next.js, Laravel, MySQL, PWA",
     },
     {
       title: "IoT Developer",
@@ -131,16 +131,6 @@ const portfolioData = {
         "Worked on Electrical Circuit Design for BSF Products. Engineered a maggot larvae (Black Soldier Fly) monitoring system using IoT sensors and a dedicated smartphone application to assist BSF factory operations.",
       skills:
         "Electrical Design, Technical Communication, Microcontroller, Integration Sensor",
-    },
-    {
-      title: "Software Engineer",
-      company: "Hael System",
-      type: "Internship",
-      date: "Jun 2016 - Jan 2017 · 8 mos",
-      location: "Majenang, Central Java, Indonesia",
-      description:
-        'Field Work Practice (PKL) at creative house "Hael System". Developed desktop-based applications, handled administration tasks, and assisted with various graphic design projects.',
-      skills: "UI/UX Design, Desktop Application Development, Graphic Design",
     },
   ],
   projects: [
