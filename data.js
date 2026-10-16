@@ -104,7 +104,7 @@ const portfolioData = {
       title: "Software Engineer",
       company: "PT. Adanu Adhinata Semesta",
       type: "Contract",
-      date: "Sep 2025 - Present · 1 yr 2 mos",
+      date: "Nov 2025 - Present · 1 yr",
       location: "Kota Yogyakarta, Indonesia (On-site)",
       description:
         "Develop and maintain enterprise applications (Employee, Marketing Sales, Tracking) on a Laravel, Vue.js, TypeScript, Queue, RabbitMQ, and MySQL/MariaDB monolith stack. Containerize and deploy applications with Docker, design CI/CD workflows with GitHub Actions and Jenkins, configure Nginx reverse proxy, domains, SSL, and VPS networking, and manage Linux servers, databases, and production maintenance.",
@@ -115,7 +115,7 @@ const portfolioData = {
       title: "Frontend Web Developer",
       company: "PT. Gawe Becik Nadhah Anugrah (GENAH)",
       type: "Contract",
-      date: "Apr 2024 - Sep 2025 · 1 yr 6 mos",
+      date: "Apr 2024 - Nov 2025 · 1 yr 8 mos",
       location: "Yogyakarta, Indonesia (On-site)",
       description:
         "Developed and maintained enterprise applications including CRM, Asset Management, and Advertiser Management systems using Laravel, Vue.js, and MySQL. Built and deployed a responsive Progressive Web App (PWA) for an E-Commerce platform using Next.js, and integrated front-end components with back-end APIs.",
