@@ -91,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
     renderExperience(portfolioData.experience);
     renderProjects(portfolioData.projects);
     initProjectFilters(portfolioData.projects);
+    if (portfolioData.infrastructure) {
+      renderInfrastructurePreview(portfolioData.infrastructure);
+    }
   } else {
     console.error('Data not found! Make sure data.js is loaded.');
   }
@@ -254,6 +257,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="project-text mt-auto">${p.description}</p>
               </div>
             </a>
+          </div>
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
+  }
+
+
+  function renderInfrastructurePreview(infraList) {
+    const container = document.getElementById('infrastructure-container');
+    if (!container) return;
+
+    let html = '';
+    const previewList = infraList.slice(0, 3); // Preview top 3
+    
+    previewList.forEach(item => {
+      // Tech tags HTML
+      let tagsHtml = item.technologies.slice(0, 5).map(tech => `<span class="badge bg-dark me-1 mb-1"><i class="fas fa-layer-group me-1"></i>${tech}</span>`).join('');
+      if (item.technologies.length > 5) {
+        tagsHtml += `<span class="badge bg-secondary me-1 mb-1">+${item.technologies.length - 5} more</span>`;
+      }
+
+      html += `
+        <div class="col-lg-10 mb-4">
+          <div class="project-card d-flex flex-column" style="padding: 2rem; background: var(--bg-card); border-left: 4px solid var(--accent-color);">
+            <div class="mb-2">
+              <span class="badge bg-secondary mb-2">${item.category.toUpperCase()}</span>
+            </div>
+            <h4 class="fw-bold mb-3" style="color: var(--text-primary);">${item.title}</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6;">${item.summary}</p>
+            <div class="mb-4 mt-2">
+              ${tagsHtml}
+            </div>
+            <div class="mt-auto">
+              <a href="infrastructure/${item.slug}/index.html" class="fw-bold" style="color: var(--accent-color); text-decoration: none;">View Case Study &rarr;</a>
+            </div>
           </div>
         </div>
       `;
