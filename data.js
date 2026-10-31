@@ -101,7 +101,7 @@ const portfolioData = {
   ],
   experience: [
     {
-      title: "Software Engineer",
+      title: "Fullstack Developer",
       company: "PT. Adanu Adhinata Semesta",
       type: "Contract",
       date: "Nov 2025 - Present · 1 yr",
