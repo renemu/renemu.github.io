@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://renemu.github.io/sitemap.xml

@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
+        const menu = document.getElementById("navbarNav");
+        if (menu && menu.classList.contains("show") && window.bootstrap) bootstrap.Collapse.getOrCreateInstance(menu).hide();
         target.scrollIntoView({
-          behavior: "smooth",
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
           block: "start",
         });
       }
@@ -138,39 +140,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('about-container');
     if (!container) return;
 
-    let html = `
-      <div class="col-md-12 mb-4">
-        <div class="about-card" style="text-align: left;">
-    `;
-    
-    about.paragraphs.forEach(p => {
-      html += `<p>${p}</p>`;
-    });
-    
-    html += `
-          <br/>
-          <h5 style="font-weight: 600; color: var(--text-primary);">Core Competencies:</h5>
-          <ul>
-    `;
-    
-    about.core_competencies.forEach(comp => {
-      html += `
-            <li style="margin-bottom: 0.5rem;">
-              <strong>${comp.title}:</strong> ${comp.description}
-            </li>
-      `;
-    });
-    
-    html += `
-          </ul>
-          <br/>
-          <p>
-            I am driven by a passion for solving complex technical challenges, adapting to new technologies, and building systems that are both reliable and scalable.
-          </p>
-        </div>
-      </div>
-    `;
-    
+    const html = `
+      <div class="col-lg-6 about-story">${about.paragraphs.map(p => `<p>${p}</p>`).join('')}</div>
+      <div class="col-lg-6 competencies">${about.core_competencies.map((comp, i) => `
+        <article class="competency"><span class="competency-number">0${i + 1}</span><div><h3>${comp.title}</h3><p>${comp.description}</p></div></article>
+      `).join('')}</div>`;
+
     container.innerHTML = html;
   }
 
@@ -226,43 +201,43 @@ document.addEventListener('DOMContentLoaded', function() {
     container.innerHTML = html;
   }
 
+  function escapeAttribute(value) {
+    return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function renderProjects(projects) {
     const container = document.getElementById('projects-container');
     if (!container) return;
 
-    let html = '';
-    
-    if (projects.length === 0) {
-      html = '<div class="col-12 text-center text-muted my-5"><h5>No projects found matching your criteria.</h5></div>';
-    }
-    
-    projects.forEach(p => {
-      let linkAttr = p.link ? `href="${p.link}" target="_blank"` : `href="javascript:void(0)" style="cursor: default;"`;
-      html += `
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="project-card h-100">
-            <a ${linkAttr} class="text-decoration-none text-reset d-block h-100">
-              <div class="project-img-wrapper">
-                <img src="${p.image}" class="project-img" alt="${p.title}" />
-                ${p.link ? `<div class="project-overlay"><i class="fas fa-external-link-alt"></i></div>` : ''}
-              </div>
-              <div class="project-content d-flex flex-column text-center">
-                <div class="mb-2">
-                  <span class="badge bg-primary me-1 mb-1">${p.year}</span>
-                  <span class="badge bg-secondary me-1 mb-1">${p.category}</span>
-                  <span class="badge bg-info text-dark me-1 mb-1">${p.role}</span>
-                </div>
-                <h5 class="fw-bold mb-2">${p.title}</h5>
-                <div class="mb-3"><span class="badge bg-dark me-1"><i class="fas fa-layer-group me-1"></i>${p.techStack}</span></div>
-                <p class="project-text mt-auto">${p.description}</p>
-              </div>
-            </a>
+    const html = projects.length ? [...projects].sort((a, b) => Number(b.year) - Number(a.year)).map(p => `
+      <div class="col-md-6 mb-4 d-flex">
+        <article class="project-card work-card h-100 w-100">
+          ${p.image ? `<div class="work-media"><img src="${escapeAttribute(p.image)}" alt="${escapeAttribute(p.imageAlt || p.title)}" loading="lazy" decoding="async" width="960" height="540"></div>` : ''}
+          <div class="work-header">
+            <div class="work-category">
+              <span class="work-icon" aria-hidden="true"><i class="fas ${p.category === 'IoT System' ? 'fa-microchip' : p.category === 'Web Services' ? 'fa-network-wired' : p.category === 'Desktop Application' ? 'fa-desktop' : 'fa-code'}"></i></span>
+              <span>${p.category}</span>
+            </div>
+            <span class="work-year">${p.year}</span>
           </div>
-        </div>
-      `;
-    });
-    
+          <div class="project-content">
+            <h3>${p.title}</h3>
+            <p class="project-role">${p.role}</p>
+            <p class="project-text">${p.description}</p>
+            <div class="project-tags" aria-label="Technologies">${p.techStack.split(',').map(t => `<span>${t.trim()}</span>`).join('')}</div>
+          </div>
+          <div class="work-footer">
+            ${p.link ? `<span class="work-status"><span aria-hidden="true"></span>Public project</span><a class="project-visit" href="${p.link}" target="_blank" rel="noopener noreferrer">View project <span aria-hidden="true">↗</span><span class="visually-hidden">: ${p.title}</span></a>` : '<span class="project-private"><i class="fas fa-code-branch" aria-hidden="true"></i> Project showcase</span><span class="work-unavailable">No public link</span>'}
+          </div>
+        </article>
+      </div>`).join('') : '<div class="col-12 text-center text-muted my-5" role="status"><h5>No projects found matching your criteria.</h5><p>Try another keyword or category.</p></div>';
+
     container.innerHTML = html;
+    container.querySelectorAll('.work-media img').forEach(img => {
+      const hideUnavailableImage = () => { img.parentElement.hidden = true; };
+      img.addEventListener('error', hideUnavailableImage, { once: true });
+      if (img.complete && img.naturalWidth === 0) hideUnavailableImage();
+    });
   }
 
 
