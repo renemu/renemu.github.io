@@ -339,7 +339,7 @@ const portfolioData = {
       year: "2026",
       role: "Fullstack Developer",
       techStack: "React (Next Js), Prisma (Mysql), Typescript",
-      link: "https://lokalinstudio.id",
+      link: "https://dwg.renemu.com",
       image: null,
       description:
         "Digital wedding guest book application developed using Next.js, Prisma, MySQL, and TypeScript.",
