@@ -233,7 +233,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Vue, Laravel Api, Mysql",
       link: "https://semar.genah.net",
-      image: null,
+      images: [
+        ImageProject + "semar-3.png",
+        ImageProject + "semar-1.png",
+        ImageProject + "semar-2.png",
+      ],
       description:
         "Designing system ERD, handling post-production, and integrating APIs for auth, middleware, and business logic.",
     },
@@ -324,6 +328,37 @@ const portfolioData = {
       ],
       description:
         "Architected core business logic using Laravel 13 and Vue.js, implemented RabbitMQ message brokers, engineered real-time bidirectional communication pipelines using WebSockets (Laravel Reverb & Pusher).",
+    },
+    {
+      title: "BASE LAYOUT Next.Js",
+      category: "Web Application",
+      year: "2026",
+      role: "Fullstack Developer",
+      techStack: "React, Next.Js, Typescript, Mysql/MariaDB, Websocket",
+      link: "https://base-next.renemu.com",
+      images: [
+        ImageProject + "base-next-3.png",
+        ImageProject + "base-next-1.png",
+        ImageProject + "base-next-2.png",
+        ImageProject + "base-next-4.png",
+      ],
+      description:
+        "Architected core business logic using Next.js and React.js, implemented WebSockets for real-time communication, and integrated with MySQL/MariaDB for database operations.",
+    },
+    {
+      title: "BASE LAYOUT Asp.Net",
+      category: "Web Application",
+      year: "2026",
+      role: "Fullstack Developer",
+      techStack: "Microsoft.Net 9, C#, Mysql, Sql Server",
+      link: "https://base-asp.renemu.com",
+      images: [
+        ImageProject + "base-asp-1.png",
+        ImageProject + "base-asp-2.png",
+        ImageProject + "base-asp-3.png",
+      ],
+      description:
+        "Architected core business logic using .Net 9 with C# and integrated with MySQL/MariaDB for database operations.",
     },
     {
       title: "GANDEWA (DBaaS)",
