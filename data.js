@@ -372,6 +372,21 @@ const portfolioData = {
         "Database as a Service side project using Laravel 13, Shadcn Vue, MySQL, and Minio.",
     },
     {
+      title: "ARKANA (SALES MANAGEMENT SYSTEM)",
+      category: "Web Application",
+      year: "2026",
+      role: "Fullstack Developer",
+      techStack: "Laravel 13 Shadcn Vue, Mysql, Laravel Reverb, Rabbitmq",
+      link: "https://arkana.asateam.tech",
+      images: [
+        ImageProject + "arkana-1.png",
+        ImageProject + "arkana-2.png",
+        ImageProject + "arkana-3.png",
+      ],
+      description:
+        "Develop for process analytic using data report analytics and report for salesman, and data tracking expedition process with third party api",
+    },
+    {
       title: "SANTIKA (EMPLOYEE MANAGEMENT SYSTEM)",
       category: "Web Application",
       year: "2026",
