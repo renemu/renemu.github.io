@@ -1,3 +1,5 @@
+const ImageProject = "assets/img/projects/";
+
 const portfolioData = {
   about: {
     paragraphs: [
@@ -59,7 +61,7 @@ const portfolioData = {
       style: "primary",
     },
     {
-      name: "MySQL/SQL",
+      name: "MariaDB/MySQL/PostgreSQL",
       icon: "fas fa-database",
       style: "primary",
     },
@@ -86,6 +88,21 @@ const portfolioData = {
     {
       name: "ESP32 / Arduino / Raspberry Pi",
       icon: "fas fa-microchip",
+      style: "info",
+    },
+    {
+      name: "Kubernetes",
+      icon: "fas fa-kubernetes",
+      style: "info",
+    },
+    {
+      name: "Terraform",
+      icon: "fas fa-robot",
+      style: "info",
+    },
+    {
+      name: "Ansible",
+      icon: "fas fa-tools",
       style: "info",
     },
     {
@@ -140,8 +157,8 @@ const portfolioData = {
   ],
   // Ukuran gambar yang disarankan: lebar 1280 px × tinggi 720 px (rasio 16:9).
   // Gambar memenuhi area kartu; rasio berbeda akan di-crop dari tengah.
-  // Optional project image: "assets/img/projects/my-project.webp" (or an HTTPS URL).
-  // Use image: null for a text-only card; imageAlt can describe the screenshot.
+  // Optional project images: images: ["assets/img/projects/one.webp", "..."].
+  // If images is empty, thumbnail is used; legacy image remains supported.
   projects: [
     {
       title: "IOT based BSF larvae monitoring system using ESP32",
@@ -150,7 +167,11 @@ const portfolioData = {
       role: "IoT Engineer",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: null,
+      images: [
+        ImageProject + "bsf-1.jpg",
+        ImageProject + "bsf-2.jpg",
+        ImageProject + "bsf-3.jpg",
+      ],
       description:
         "Designing system architecture and wiring diagrams, soldering components, integrating humidity/temperature sensors, and uploading code using the Arduino IDE for Blynk IoT dashboard integration.",
     },
@@ -174,7 +195,7 @@ const portfolioData = {
       role: "IoT Engineer",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: "assets/img/projects/vehicle-battery-monitoring.jpg",
+      image: ImageProject + "vehicle-battery-monitoring.jpg",
       description:
         "Root cause analysis, monitoring method development, system architecture creation, and integration of ACS712 current sensor with Blynk IoT for a Suzuki Swift vehicle.",
     },
@@ -186,7 +207,7 @@ const portfolioData = {
       role: "Researcher",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: "assets/img/projects/monsel.jpg",
+      image: ImageProject + "monsel.jpg",
       description:
         "Engineered monitoring architecture, programmed microcontroller for INA219 sensors, calculated per-cell balancing, and bridged real-time telemetry into a Nextion HMI display and Blynk IoT.",
     },
@@ -197,7 +218,11 @@ const portfolioData = {
       role: "Frontend Developer",
       techStack: "Vue, Laravel Api, Mysql",
       link: "https://arjuna.genah.net",
-      image: null,
+      images: [
+        ImageProject + "arjuna-1.png",
+        ImageProject + "arjuna-2.png",
+        ImageProject + "arjuna-3.png",
+      ],
       description:
         "Designing and building UX, REST API integration including authentication, middleware, and business logic.",
     },
@@ -219,7 +244,13 @@ const portfolioData = {
       role: "IoT Engineer",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: "assets/img/projects/iot-oil-leak-detection.jpg",
+      images: [
+        ImageProject + "monoil-1.jpg",
+        ImageProject + "monoil-2.jpg",
+        ImageProject + "monoil-3.jpg",
+        ImageProject + "monoil-4.jpg",
+        ImageProject + "monoil-5.jpg",
+      ],
       description:
         "Root cause analysis, design of oil leak detection, and integration of water, turbidity, DS18B20 temperature, and pressure sensors with Blynk IoT platform.",
     },
@@ -230,7 +261,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Vue, Laravel Api, Mysql",
       link: null,
-      image: null,
+      images: [
+        ImageProject + "nakula-1.png",
+        ImageProject + "nakula-2.png",
+        ImageProject + "nakula-3.png",
+      ],
       description:
         "Development of an advertiser management system using Vue and Laravel API.",
     },
@@ -241,7 +276,11 @@ const portfolioData = {
       role: "Frontend Developer",
       techStack: "React (Next Js), Javascript",
       link: "https://genvit.id",
-      image: null,
+      images: [
+        ImageProject + "genvit-3.png",
+        ImageProject + "genvit-1.png",
+        ImageProject + "genvit-2.png",
+      ],
       description:
         "UI/UX implementation using Next.js, integration with Go (Golang) backend APIs, and deployment with CI/CD and Docker.",
     },
@@ -263,7 +302,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Laravel 12, Vue + Tailwind, Mysql, rabbitmq",
       link: "https://erp.asateam.tech",
-      image: null,
+      images: [
+        ImageProject + "erp-v1-asateam-1.png",
+        ImageProject + "erp-v1-asateam-2.png",
+        ImageProject + "erp-v1-asateam-3.png",
+      ],
       description:
         "Developing business logic, integrating RabbitMQ as a message broker, implementing queues and schedulers, and integrating WebSockets using PusherJS.",
     },
@@ -274,7 +317,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Laravel 13 Shadcn Vue, Mysql, rabbitmq, reverb/pusher",
       link: "https://erp-v2.asateam.tech",
-      image: null,
+      images: [
+        ImageProject + "erp-v2-asateam-1.png",
+        ImageProject + "erp-v2-asateam-2.png",
+        ImageProject + "erp-v2-asateam-3.png",
+      ],
       description:
         "Architected core business logic using Laravel 13 and Vue.js, implemented RabbitMQ message brokers, engineered real-time bidirectional communication pipelines using WebSockets (Laravel Reverb & Pusher).",
     },
@@ -294,11 +341,30 @@ const portfolioData = {
       category: "Web Application",
       year: "2026",
       role: "Fullstack Developer",
-      techStack: "Laravel 12, Vue + Tailwind, Mysql, rabbitmq",
+      techStack: "Laravel 12 Vue + Tailwind, Mysql, rabbitmq",
       link: "https://santika.asateam.tech",
-      image: null,
+      images: [
+        ImageProject + "santika-1.png",
+        ImageProject + "santika-2.png",
+        ImageProject + "santika-3.png",
+      ],
       description:
         "Employee management system developed using Laravel 12, Vue, Tailwind, MySQL, and RabbitMQ.",
+    },
+    {
+      title: "SAKTA (HOST LIVE MANAGEMENT SYSTEM)",
+      category: "Web Application",
+      year: "2026",
+      role: "Fullstack Developer",
+      techStack: "Laravel 13 Shadcn Vue, Mysql, rabbitmq, reverb/pusher",
+      link: "https://sakta.asateam.id",
+      images: [
+        ImageProject + "sakta-1.png",
+        ImageProject + "sakta-2.png",
+        ImageProject + "sakta-3.png",
+      ],
+      description:
+        "Host live freelance management system. This is management host live and for freelance and performance live KPI. and have feature auto-shift and auto-attendance.",
     },
     {
       title: "ATTENDANCE SERVICE WEBHOOK MULTIPLEXER",
@@ -318,7 +384,12 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Electron Js (Vue), Typescript, Sql Lite",
       link: null,
-      image: null,
+      images: [
+        ImageProject + "booth-1.png",
+        ImageProject + "booth-2.png",
+        ImageProject + "booth-3.png",
+        ImageProject + "booth-4.png",
+      ],
       description:
         "Desktop photobooth application developed using Electron.js Desktop app + Vue 3 + TypeScript.",
     },
@@ -329,7 +400,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Laravel 13 Shadcn Vue, Mysql, Api",
       link: "https://rebooth.renemu.com",
-      image: null,
+      images: [
+        ImageProject + "rebooth-1.png",
+        ImageProject + "rebooth-2.png",
+        ImageProject + "rebooth-3.png",
+      ],
       description:
         "Admin panel for booth management developed with Laravel 13, Shadcn Vue, and MySQL.",
     },
@@ -340,7 +415,17 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "React (Next Js), Prisma (Mysql), Typescript",
       link: "https://dwg.renemu.com",
-      image: null,
+      images: [
+        ImageProject + "dwg-1.png",
+        ImageProject + "dwg-2.png",
+        ImageProject + "dwg-3.png",
+        ImageProject + "dwg-4.png",
+        ImageProject + "dwg-5.png",
+        ImageProject + "dwg-6.png",
+        ImageProject + "dwg-7.png",
+        ImageProject + "dwg-8.png",
+        ImageProject + "dwg-9.png",
+      ],
       description:
         "Digital wedding guest book application developed using Next.js, Prisma, MySQL, and TypeScript.",
     },
@@ -362,7 +447,11 @@ const portfolioData = {
       role: "IoT Engineer",
       techStack: "C++, Microcontroller, ac voltage meter",
       link: null,
-      image: "assets/img/projects/modules-power-pc.jpg",
+      images: [
+        ImageProject + "module-pc-1.jpg",
+        ImageProject + "module-pc-2.jpg",
+        ImageProject + "module-pc-3.jpg",
+      ],
       description:
         "Engineered microcontroller logic (C++) and integrated AC voltage sensors for real-time power state monitoring with Discord API automated status notifications.",
     },
@@ -373,7 +462,11 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Codeigniter 4, Mysql, Tailwind",
       link: "https://billmate.renemu.com",
-      image: null,
+      images: [
+        ImageProject + "billmate-1.png",
+        ImageProject + "billmate-2.png",
+        ImageProject + "billmate-3.png",
+      ],
       description:
         "Income and expense management application developed using CodeIgniter 4, MySQL, and Tailwind.",
     },
@@ -384,7 +477,12 @@ const portfolioData = {
       role: "Fullstack Developer",
       techStack: "Vue (Nuxt Js 3), Typescript",
       link: "https://scouts.renemu.com",
-      image: null,
+      images: [
+        ImageProject + "scouts-camp-1.png",
+        ImageProject + "scouts-camp-2.png",
+        ImageProject + "scouts-camp-3.png",
+        ImageProject + "scouts-camp-4.png",
+      ],
       description:
         "Scouts camp application developed using Nuxt 3 and TypeScript.",
     },

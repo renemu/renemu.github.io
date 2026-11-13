@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const html = projects.length ? [...projects].sort((a, b) => Number(b.year) - Number(a.year)).map(p => `
       <div class="col-md-6 mb-4 d-flex">
         <article class="project-card work-card h-100 w-100">
-          ${p.image ? `<div class="work-media"><img src="${escapeAttribute(p.image)}" alt="${escapeAttribute(p.imageAlt || p.title)}" loading="lazy" decoding="async" width="960" height="540"></div>` : ''}
+          ${(() => { const images = (Array.isArray(p.images) ? p.images : []).filter(Boolean); const selected = images.length ? images : (p.image ? [p.image] : (p.thumbnail ? [p.thumbnail] : [])); return selected.length ? `<div class="work-media">${selected.map((src, i) => `<div class="work-slide"><img src="${escapeAttribute(src)}" alt="${escapeAttribute((p.imageAlt || p.title) + (selected.length > 1 ? ` — image ${i + 1}` : ''))}" loading="lazy" decoding="async" width="960" height="540"><button class="work-preview" type="button" aria-label="Preview image ${i + 1} for ${escapeAttribute(p.title)}"><i class="fas fa-expand" aria-hidden="true"></i><span>Preview</span></button></div>`).join('')}</div>` : ''; })()}
           <div class="work-header">
             <div class="work-category">
               <span class="work-icon" aria-hidden="true"><i class="fas ${p.category === 'IoT System' ? 'fa-microchip' : p.category === 'Web Services' ? 'fa-network-wired' : p.category === 'Desktop Application' ? 'fa-desktop' : 'fa-code'}"></i></span>
@@ -233,11 +233,73 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>`).join('') : '<div class="col-12 text-center text-muted my-5" role="status"><h5>No projects found matching your criteria.</h5><p>Try another keyword or category.</p></div>';
 
     container.innerHTML = html;
+    const previewModal = getImagePreviewModal();
+    container.querySelectorAll('.work-media').forEach(media => {
+      const slides = [...media.querySelectorAll('.work-slide')];
+      slides.forEach((slide, index) => {
+        slide.querySelector('.work-preview').addEventListener('click', () => previewModal.open(slides.map(item => item.querySelector('img')).filter(img => img && img.isConnected && !img.parentElement.hidden && img.getAttribute('src')), index));
+      });
+    });
+    container.querySelectorAll('.work-media').forEach(media => {
+      const slides = [...media.querySelectorAll('img')];
+      if (slides.length < 2) return;
+      let timer;
+      const stop = () => { clearInterval(timer); timer = undefined; };
+      const start = () => {
+        if (document.body.classList.contains('preview-open')) return;
+        stop();
+        timer = setInterval(() => {
+          const nextLeft = media.scrollLeft + media.clientWidth;
+          media.scrollTo({ left: nextLeft >= media.scrollWidth - 1 ? 0 : nextLeft, behavior: 'smooth' });
+        }, 3000);
+      };
+      media.addEventListener('pointerenter', start);
+      media.addEventListener('pointerleave', stop);
+      media.addEventListener('click', event => { if (event.target.closest('.work-preview')) stop(); });
+      media.addEventListener('focusin', start);
+      media.addEventListener('focusout', stop);
+    });
     container.querySelectorAll('.work-media img').forEach(img => {
       const hideUnavailableImage = () => { img.parentElement.hidden = true; };
       img.addEventListener('error', hideUnavailableImage, { once: true });
       if (img.complete && img.naturalWidth === 0) hideUnavailableImage();
     });
+  }
+
+  function getImagePreviewModal() {
+    let modal = document.getElementById('image-preview-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'image-preview-modal';
+      modal.className = 'image-preview-modal';
+      modal.hidden = true;
+      modal.innerHTML = '<div class="image-preview-backdrop" data-close></div><div class="image-preview-dialog" role="dialog" aria-modal="true" aria-label="Image preview"><button class="image-preview-close" type="button" aria-label="Close preview" data-close>&times;</button><button class="image-preview-prev" type="button" aria-label="Previous image">&#8249;</button><img class="image-preview-image" alt=""><button class="image-preview-next" type="button" aria-label="Next image">&#8250;</button><div class="image-preview-count" aria-live="polite"></div></div>';
+      document.body.appendChild(modal);
+    }
+    const image = modal.querySelector('.image-preview-image');
+    const count = modal.querySelector('.image-preview-count');
+    let items = [], current = 0, previousFocus;
+    const show = index => {
+      if (!items.length) return false;
+      current = (index + items.length) % items.length;
+      image.src = items[current].src;
+      image.alt = items[current].alt;
+      count.textContent = `${current + 1} / ${items.length}`;
+      modal.querySelector('.image-preview-prev').hidden = items.length < 2;
+      modal.querySelector('.image-preview-next').hidden = items.length < 2;
+      return true;
+    };
+    const close = () => { modal.hidden = true; document.body.classList.remove('preview-open'); if (previousFocus) previousFocus.focus(); };
+    modal.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', close));
+    modal.querySelector('.image-preview-prev').addEventListener('click', () => show(current - 1));
+    modal.querySelector('.image-preview-next').addEventListener('click', () => show(current + 1));
+    document.addEventListener('keydown', event => {
+      if (modal.hidden) return;
+      if (event.key === 'Escape') close();
+      if (event.key === 'ArrowLeft') show(current - 1);
+      if (event.key === 'ArrowRight') show(current + 1);
+    });
+    return { open(images, index) { items = images.filter(img => img && img.isConnected && img.getAttribute('src')); if (!items.length) return; previousFocus = document.activeElement; if (!show(Math.min(index, items.length - 1))) return; modal.hidden = false; document.body.classList.add('preview-open'); modal.querySelector('.image-preview-close').focus(); } };
   }
 
 
