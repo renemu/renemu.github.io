@@ -1,12 +1,29 @@
-const ImageProject = "assets/img/projects/";
+import type { PortfolioData } from "@/types/portfolio";
 
-const portfolioData = {
+const IMAGE_PROJECT_PREFIX = "/assets/img/projects/";
+
+export const SITE_CONFIG = {
+  origin: "https://renemu.github.io",
+  name: "Muhammad Rifki Zulfikar",
+  shortName: "M Rifki Z",
+  jobTitle: "Software Engineer",
+  email: "muhamadrifkizulfikar@gmail.com",
+  portraitPath: "/assets/img/avatar/rifki_ai_2.jpg",
+  socials: {
+    github: "https://github.com/renemu",
+    linkedin: "https://www.linkedin.com/in/muhammad-rifki-zulfikar-s-t-4243a9144/",
+    linkedinCanonical: "https://www.linkedin.com/in/muhammad-rifki-zulfikar-4243a9144",
+    instagram: "https://www.instagram.com/tuan_zuli/",
+  },
+} as const;
+
+export const portfolioData: PortfolioData = {
   about: {
     paragraphs: [
       "A multi-disciplinary engineer specializing in Software, Infrastructure, and IoT engineering. With a Bachelor's degree in Electrical Engineering from Siliwangi University (Computer & Control Systems), I bridge the gap between physical hardware and scalable software systems.",
       "My engineering journey started in vocational school and has evolved into designing end-to-end solutions: from microcontroller-level programming to backend web services and server orchestration. I am highly proficient in modern development environments, actively leveraging AI-assisted tools (Cursor, GitHub Copilot, Claude) to accelerate delivery and write optimized code.",
     ],
-    core_competencies: [
+    coreCompetencies: [
       {
         title: "Software Engineering",
         description:
@@ -24,7 +41,7 @@ const portfolioData = {
       },
     ],
   },
-  tech_stack: [
+  techStack: [
     {
       name: "Laravel",
       icon: "fab fa-laravel",
@@ -92,7 +109,7 @@ const portfolioData = {
     },
     {
       name: "Kubernetes",
-      icon: "fas fa-kubernetes",
+      icon: "fas fa-dharmachakra",
       style: "info",
     },
     {
@@ -107,7 +124,7 @@ const portfolioData = {
     },
     {
       name: "Jenkins",
-      icon: null,
+      icon: "fab fa-jenkins",
       style: "info",
     },
     {
@@ -155,10 +172,6 @@ const portfolioData = {
         "Electrical Design, Technical Communication, Microcontroller, Integration Sensor",
     },
   ],
-  // Ukuran gambar yang disarankan: lebar 1280 px × tinggi 720 px (rasio 16:9).
-  // Gambar memenuhi area kartu; rasio berbeda akan di-crop dari tengah.
-  // Optional project images: images: ["assets/img/projects/one.webp", "..."].
-  // If images is empty, thumbnail is used; legacy image remains supported.
   projects: [
     {
       title: "IOT based BSF larvae monitoring system using ESP32",
@@ -168,9 +181,9 @@ const portfolioData = {
       techStack: "C++, Microcontroller, Blynk",
       link: null,
       images: [
-        ImageProject + "bsf-1.jpg",
-        ImageProject + "bsf-2.jpg",
-        ImageProject + "bsf-3.jpg",
+        `${IMAGE_PROJECT_PREFIX}bsf-1.jpg`,
+        `${IMAGE_PROJECT_PREFIX}bsf-2.jpg`,
+        `${IMAGE_PROJECT_PREFIX}bsf-3.jpg`,
       ],
       description:
         "Designing system architecture and wiring diagrams, soldering components, integrating humidity/temperature sensors, and uploading code using the Arduino IDE for Blynk IoT dashboard integration.",
@@ -195,7 +208,7 @@ const portfolioData = {
       role: "IoT Engineer",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: ImageProject + "vehicle-battery-monitoring.jpg",
+      image: `${IMAGE_PROJECT_PREFIX}vehicle-battery-monitoring.jpg`,
       description:
         "Root cause analysis, monitoring method development, system architecture creation, and integration of ACS712 current sensor with Blynk IoT for a Suzuki Swift vehicle.",
     },
@@ -207,7 +220,7 @@ const portfolioData = {
       role: "Researcher",
       techStack: "C++, Microcontroller, Blynk",
       link: null,
-      image: ImageProject + "monsel.jpg",
+      image: `${IMAGE_PROJECT_PREFIX}monsel.jpg`,
       description:
         "Engineered monitoring architecture, programmed microcontroller for INA219 sensors, calculated per-cell balancing, and bridged real-time telemetry into a Nextion HMI display and Blynk IoT.",
     },
@@ -219,9 +232,9 @@ const portfolioData = {
       techStack: "Vue, Laravel Api, Mysql",
       link: "https://arjuna.genah.net",
       images: [
-        ImageProject + "arjuna-1.png",
-        ImageProject + "arjuna-2.png",
-        ImageProject + "arjuna-3.png",
+        `${IMAGE_PROJECT_PREFIX}arjuna-1.png`,
+        `${IMAGE_PROJECT_PREFIX}arjuna-2.png`,
+        `${IMAGE_PROJECT_PREFIX}arjuna-3.png`,
       ],
       description:
         "Designing and building UX, REST API integration including authentication, middleware, and business logic.",
@@ -234,9 +247,9 @@ const portfolioData = {
       techStack: "Vue, Laravel Api, Mysql",
       link: "https://semar.genah.net",
       images: [
-        ImageProject + "semar-3.png",
-        ImageProject + "semar-1.png",
-        ImageProject + "semar-2.png",
+        `${IMAGE_PROJECT_PREFIX}semar-3.png`,
+        `${IMAGE_PROJECT_PREFIX}semar-1.png`,
+        `${IMAGE_PROJECT_PREFIX}semar-2.png`,
       ],
       description:
         "Designing system ERD, handling post-production, and integrating APIs for auth, middleware, and business logic.",
@@ -249,11 +262,11 @@ const portfolioData = {
       techStack: "C++, Microcontroller, Blynk",
       link: null,
       images: [
-        ImageProject + "monoil-1.jpg",
-        ImageProject + "monoil-2.jpg",
-        ImageProject + "monoil-3.jpg",
-        ImageProject + "monoil-4.jpg",
-        ImageProject + "monoil-5.jpg",
+        `${IMAGE_PROJECT_PREFIX}monoil-1.jpg`,
+        `${IMAGE_PROJECT_PREFIX}monoil-2.jpg`,
+        `${IMAGE_PROJECT_PREFIX}monoil-3.jpg`,
+        `${IMAGE_PROJECT_PREFIX}monoil-4.jpg`,
+        `${IMAGE_PROJECT_PREFIX}monoil-5.jpg`,
       ],
       description:
         "Root cause analysis, design of oil leak detection, and integration of water, turbidity, DS18B20 temperature, and pressure sensors with Blynk IoT platform.",
@@ -266,9 +279,9 @@ const portfolioData = {
       techStack: "Vue, Laravel Api, Mysql",
       link: null,
       images: [
-        ImageProject + "nakula-1.png",
-        ImageProject + "nakula-2.png",
-        ImageProject + "nakula-3.png",
+        `${IMAGE_PROJECT_PREFIX}nakula-1.png`,
+        `${IMAGE_PROJECT_PREFIX}nakula-2.png`,
+        `${IMAGE_PROJECT_PREFIX}nakula-3.png`,
       ],
       description:
         "Development of an advertiser management system using Vue and Laravel API.",
@@ -281,9 +294,9 @@ const portfolioData = {
       techStack: "React (Next Js), Javascript",
       link: "https://genvit.id",
       images: [
-        ImageProject + "genvit-3.png",
-        ImageProject + "genvit-1.png",
-        ImageProject + "genvit-2.png",
+        `${IMAGE_PROJECT_PREFIX}genvit-3.png`,
+        `${IMAGE_PROJECT_PREFIX}genvit-1.png`,
+        `${IMAGE_PROJECT_PREFIX}genvit-2.png`,
       ],
       description:
         "UI/UX implementation using Next.js, integration with Go (Golang) backend APIs, and deployment with CI/CD and Docker.",
@@ -307,9 +320,9 @@ const portfolioData = {
       techStack: "Laravel 12, Vue + Tailwind, Mysql, rabbitmq",
       link: "https://erp.asateam.tech",
       images: [
-        ImageProject + "erp-v1-asateam-1.png",
-        ImageProject + "erp-v1-asateam-2.png",
-        ImageProject + "erp-v1-asateam-3.png",
+        `${IMAGE_PROJECT_PREFIX}erp-v1-asateam-1.png`,
+        `${IMAGE_PROJECT_PREFIX}erp-v1-asateam-2.png`,
+        `${IMAGE_PROJECT_PREFIX}erp-v1-asateam-3.png`,
       ],
       description:
         "Developing business logic, integrating RabbitMQ as a message broker, implementing queues and schedulers, and integrating WebSockets using PusherJS.",
@@ -322,9 +335,9 @@ const portfolioData = {
       techStack: "Laravel 13 Shadcn Vue, Mysql, rabbitmq, reverb/pusher",
       link: "https://erp-v2.asateam.tech",
       images: [
-        ImageProject + "erp-v2-asateam-1.png",
-        ImageProject + "erp-v2-asateam-2.png",
-        ImageProject + "erp-v2-asateam-3.png",
+        `${IMAGE_PROJECT_PREFIX}erp-v2-asateam-1.png`,
+        `${IMAGE_PROJECT_PREFIX}erp-v2-asateam-2.png`,
+        `${IMAGE_PROJECT_PREFIX}erp-v2-asateam-3.png`,
       ],
       description:
         "Architected core business logic using Laravel 13 and Vue.js, implemented RabbitMQ message brokers, engineered real-time bidirectional communication pipelines using WebSockets (Laravel Reverb & Pusher).",
@@ -337,10 +350,10 @@ const portfolioData = {
       techStack: "React, Next.Js, Typescript, Mysql/MariaDB, Websocket",
       link: "https://base-next.renemu.com",
       images: [
-        ImageProject + "base-next-3.png",
-        ImageProject + "base-next-1.png",
-        ImageProject + "base-next-2.png",
-        ImageProject + "base-next-4.png",
+        `${IMAGE_PROJECT_PREFIX}base-next-3.png`,
+        `${IMAGE_PROJECT_PREFIX}base-next-1.png`,
+        `${IMAGE_PROJECT_PREFIX}base-next-2.png`,
+        `${IMAGE_PROJECT_PREFIX}base-next-4.png`,
       ],
       description:
         "Architected core business logic using Next.js and React.js, implemented WebSockets for real-time communication, and integrated with MySQL/MariaDB for database operations.",
@@ -353,9 +366,9 @@ const portfolioData = {
       techStack: "Microsoft.Net 9, C#, Mysql, Sql Server",
       link: "https://base-asp.renemu.com",
       images: [
-        ImageProject + "base-asp-1.png",
-        ImageProject + "base-asp-2.png",
-        ImageProject + "base-asp-3.png",
+        `${IMAGE_PROJECT_PREFIX}base-asp-1.png`,
+        `${IMAGE_PROJECT_PREFIX}base-asp-2.png`,
+        `${IMAGE_PROJECT_PREFIX}base-asp-3.png`,
       ],
       description:
         "Architected core business logic using .Net 9 with C# and integrated with MySQL/MariaDB for database operations.",
@@ -379,9 +392,9 @@ const portfolioData = {
       techStack: "Laravel 13 Shadcn Vue, Mysql, Laravel Reverb, Rabbitmq",
       link: "https://arkana.asateam.tech",
       images: [
-        ImageProject + "arkana-1.png",
-        ImageProject + "arkana-2.png",
-        ImageProject + "arkana-3.png",
+        `${IMAGE_PROJECT_PREFIX}arkana-1.png`,
+        `${IMAGE_PROJECT_PREFIX}arkana-2.png`,
+        `${IMAGE_PROJECT_PREFIX}arkana-3.png`,
       ],
       description:
         "Develop for process analytic using data report analytics and report for salesman, and data tracking expedition process with third party api",
@@ -394,9 +407,9 @@ const portfolioData = {
       techStack: "Laravel 12 Vue + Tailwind, Mysql, rabbitmq",
       link: "https://santika.asateam.tech",
       images: [
-        ImageProject + "santika-1.png",
-        ImageProject + "santika-2.png",
-        ImageProject + "santika-3.png",
+        `${IMAGE_PROJECT_PREFIX}santika-1.png`,
+        `${IMAGE_PROJECT_PREFIX}santika-2.png`,
+        `${IMAGE_PROJECT_PREFIX}santika-3.png`,
       ],
       description:
         "Employee management system developed using Laravel 12, Vue, Tailwind, MySQL, and RabbitMQ.",
@@ -409,9 +422,9 @@ const portfolioData = {
       techStack: "Laravel 13 Shadcn Vue, Mysql, rabbitmq, reverb/pusher",
       link: "https://sakta.asateam.id",
       images: [
-        ImageProject + "sakta-1.png",
-        ImageProject + "sakta-2.png",
-        ImageProject + "sakta-3.png",
+        `${IMAGE_PROJECT_PREFIX}sakta-1.png`,
+        `${IMAGE_PROJECT_PREFIX}sakta-2.png`,
+        `${IMAGE_PROJECT_PREFIX}sakta-3.png`,
       ],
       description:
         "Host live freelance management system. This is management host live and for freelance and performance live KPI. and have feature auto-shift and auto-attendance.",
@@ -435,10 +448,10 @@ const portfolioData = {
       techStack: "Electron Js (Vue), Typescript, Sql Lite",
       link: null,
       images: [
-        ImageProject + "booth-1.png",
-        ImageProject + "booth-2.png",
-        ImageProject + "booth-3.png",
-        ImageProject + "booth-4.png",
+        `${IMAGE_PROJECT_PREFIX}booth-1.png`,
+        `${IMAGE_PROJECT_PREFIX}booth-2.png`,
+        `${IMAGE_PROJECT_PREFIX}booth-3.png`,
+        `${IMAGE_PROJECT_PREFIX}booth-4.png`,
       ],
       description:
         "Desktop photobooth application developed using Electron.js Desktop app + Vue 3 + TypeScript.",
@@ -451,9 +464,9 @@ const portfolioData = {
       techStack: "Laravel 13 Shadcn Vue, Mysql, Api",
       link: "https://rebooth.renemu.com",
       images: [
-        ImageProject + "rebooth-1.png",
-        ImageProject + "rebooth-2.png",
-        ImageProject + "rebooth-3.png",
+        `${IMAGE_PROJECT_PREFIX}rebooth-1.png`,
+        `${IMAGE_PROJECT_PREFIX}rebooth-2.png`,
+        `${IMAGE_PROJECT_PREFIX}rebooth-3.png`,
       ],
       description:
         "Admin panel for booth management developed with Laravel 13, Shadcn Vue, and MySQL.",
@@ -466,15 +479,15 @@ const portfolioData = {
       techStack: "React (Next Js), Prisma (Mysql), Typescript",
       link: "https://dwg.renemu.com",
       images: [
-        ImageProject + "dwg-1.png",
-        ImageProject + "dwg-2.png",
-        ImageProject + "dwg-3.png",
-        ImageProject + "dwg-4.png",
-        ImageProject + "dwg-5.png",
-        ImageProject + "dwg-6.png",
-        ImageProject + "dwg-7.png",
-        ImageProject + "dwg-8.png",
-        ImageProject + "dwg-9.png",
+        `${IMAGE_PROJECT_PREFIX}dwg-1.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-2.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-3.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-4.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-5.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-6.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-7.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-8.png`,
+        `${IMAGE_PROJECT_PREFIX}dwg-9.png`,
       ],
       description:
         "Digital wedding guest book application developed using Next.js, Prisma, MySQL, and TypeScript.",
@@ -498,9 +511,9 @@ const portfolioData = {
       techStack: "C++, Microcontroller, ac voltage meter",
       link: null,
       images: [
-        ImageProject + "module-pc-1.jpg",
-        ImageProject + "module-pc-2.jpg",
-        ImageProject + "module-pc-3.jpg",
+        `${IMAGE_PROJECT_PREFIX}module-pc-1.jpg`,
+        `${IMAGE_PROJECT_PREFIX}module-pc-2.jpg`,
+        `${IMAGE_PROJECT_PREFIX}module-pc-3.jpg`,
       ],
       description:
         "Engineered microcontroller logic (C++) and integrated AC voltage sensors for real-time power state monitoring with Discord API automated status notifications.",
@@ -513,9 +526,9 @@ const portfolioData = {
       techStack: "Codeigniter 4, Mysql, Tailwind",
       link: "https://billmate.renemu.com",
       images: [
-        ImageProject + "billmate-1.png",
-        ImageProject + "billmate-2.png",
-        ImageProject + "billmate-3.png",
+        `${IMAGE_PROJECT_PREFIX}billmate-1.png`,
+        `${IMAGE_PROJECT_PREFIX}billmate-2.png`,
+        `${IMAGE_PROJECT_PREFIX}billmate-3.png`,
       ],
       description:
         "Income and expense management application developed using CodeIgniter 4, MySQL, and Tailwind.",
@@ -528,16 +541,15 @@ const portfolioData = {
       techStack: "Vue (Nuxt Js 3), Typescript",
       link: "https://scouts.renemu.com",
       images: [
-        ImageProject + "scouts-camp-1.png",
-        ImageProject + "scouts-camp-2.png",
-        ImageProject + "scouts-camp-3.png",
-        ImageProject + "scouts-camp-4.png",
+        `${IMAGE_PROJECT_PREFIX}scouts-camp-1.png`,
+        `${IMAGE_PROJECT_PREFIX}scouts-camp-2.png`,
+        `${IMAGE_PROJECT_PREFIX}scouts-camp-3.png`,
+        `${IMAGE_PROJECT_PREFIX}scouts-camp-4.png`,
       ],
       description:
         "Scouts camp application developed using Nuxt 3 and TypeScript.",
     },
   ],
-
   infrastructure: [
     {
       slug: "large-file-upload",
@@ -713,3 +725,7 @@ const portfolioData = {
     },
   ],
 };
+
+export function getInfrastructureBySlug(slug: string) {
+  return portfolioData.infrastructure.find((item) => item.slug === slug);
+}

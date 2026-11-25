@@ -3,7 +3,7 @@
   --bg-primary: #101716; --bg-secondary: #151e1c; --bg-card: #1b2522;
   --text-primary: #f1f4ed; --text-secondary: #aab9b1; --accent-color: #b5ed9a;
   --accent-hover: #cef9b9; --border-color: #324039;
-  font-family: 'Poppins', sans-serif; font-size: 14px;
+  font-family: var(--font-poppins), 'Poppins', sans-serif; font-size: 14px;
 }
 [data-theme="light"] .portfolio-page {
   --bg-primary: #f7f8f2; --bg-secondary: #edf0e7; --bg-card: #fff;
