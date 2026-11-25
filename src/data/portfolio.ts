@@ -11,8 +11,10 @@ export const SITE_CONFIG = {
   portraitPath: "/assets/img/avatar/rifki_ai_2.jpg",
   socials: {
     github: "https://github.com/renemu",
-    linkedin: "https://www.linkedin.com/in/muhammad-rifki-zulfikar-s-t-4243a9144/",
-    linkedinCanonical: "https://www.linkedin.com/in/muhammad-rifki-zulfikar-4243a9144",
+    linkedin:
+      "https://www.linkedin.com/in/muhammad-rifki-zulfikar-s-t-4243a9144/",
+    linkedinCanonical:
+      "https://www.linkedin.com/in/muhammad-rifki-zulfikar-4243a9144",
     instagram: "https://www.instagram.com/tuan_zuli/",
   },
 } as const;
@@ -448,8 +450,6 @@ export const portfolioData: PortfolioData = {
       techStack: "Electron Js (Vue), Typescript, Sql Lite",
       link: null,
       images: [
-        `${IMAGE_PROJECT_PREFIX}booth-1.png`,
-        `${IMAGE_PROJECT_PREFIX}booth-2.png`,
         `${IMAGE_PROJECT_PREFIX}booth-3.png`,
         `${IMAGE_PROJECT_PREFIX}booth-4.png`,
       ],

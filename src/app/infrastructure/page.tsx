@@ -2,6 +2,7 @@ import Link from "next/link";
 import { portfolioData } from "@/data/portfolio";
 import { buildInfrastructureIndexJsonLd, buildPageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
+import { InfrastructureCard } from "@/components/ui/InfrastructureCard";
 
 const INFRA_TITLE =
   "Infrastructure & DevOps Case Studies | Muhammad Rifki Zulfikar";
@@ -13,6 +14,16 @@ export const metadata = buildPageMetadata({
   description: INFRA_DESCRIPTION,
   pathname: "/infrastructure/",
   ogType: "website",
+  keywords: [
+    "Infrastructure Case Studies",
+    "DevOps",
+    "Linux Server",
+    "Jenkins CI/CD",
+    "Nginx Proxy Manager",
+    "NetBird VPN",
+    "Cloudflare Tunnel",
+    "Muhammad Rifki Zulfikar",
+  ],
 });
 
 export default function InfrastructurePage() {
@@ -25,7 +36,7 @@ export default function InfrastructurePage() {
       />
 
       <header className="infra-hero">
-        <div className="container">
+        <div className="site-container">
           <Link className="infra-back" href="/">
             ← Back to portfolio
           </Link>
@@ -46,31 +57,23 @@ export default function InfrastructurePage() {
         </div>
       </header>
 
-      <div className="container infra-grid">
-        {infraList.map((item, i) => (
-          <article className="infra-card" key={item.slug}>
-            <div className="infra-card-top">
-              <span className="section-kicker">CASE STUDY / 0{i + 1}</span>
-              <i className="fas fa-server" aria-hidden="true" />
-            </div>
-            <p className="infra-category">{item.category}</p>
-            <h2>{item.title}</h2>
-            <p>{item.summary}</p>
-            <div className="infra-tags">
-              {item.technologies.map((tech) => (
-                <span key={tech}>{tech}</span>
-              ))}
-            </div>
-            <Link
-              className="infra-card-link"
-              href={`/infrastructure/${item.slug}/`}
-            >
-              Explore case study <span aria-hidden="true">↗</span>
-              <span className="visually-hidden">: {item.title}</span>
-            </Link>
-          </article>
-        ))}
-      </div>
+      <section
+        className="infra-index-section"
+        aria-label="Infrastructure case studies"
+      >
+        <div className="site-container">
+          <div className="infra-grid">
+            {infraList.map((item, idx) => (
+              <InfrastructureCard
+                key={item.slug}
+                item={item}
+                index={idx}
+                headingAs="h2"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

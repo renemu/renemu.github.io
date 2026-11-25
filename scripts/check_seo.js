@@ -24,6 +24,16 @@ for (const url of urls) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `Expected single <h1> on ${url}`);
   assert.equal((html.match(/name="description"/g) || []).length, 1, `Expected single meta description on ${url}`);
   assert(html.includes(`property="og:url" content="${url}"`), `og:url mismatch on ${url}`);
+  assert(html.includes('name="twitter:card"'), `Missing twitter:card on ${url}`);
+
+  // Semantic HTML5 landmarks
+  assert(html.includes("<header"), `Missing <header> landmark on ${url}`);
+  assert(html.includes("<nav"), `Missing <nav> landmark on ${url}`);
+  assert(html.includes("<main"), `Missing <main> landmark on ${url}`);
+  assert(html.includes("<footer"), `Missing <footer> landmark on ${url}`);
+
+  // Heading hierarchy check (no skipped levels like h2 -> h4)
+  assert(!/<h4\b/.test(html), `Unexpected skipped heading <h4> on ${url}`);
 
   const titleMatch = html.match(/<title>(.*?)<\/title>/);
   assert(titleMatch && titleMatch[1], `Missing <title> on ${url}`);
@@ -50,5 +60,5 @@ for (const url of urls) {
 }
 
 console.log(
-  `SEO checks passed for ${urls.length} static pages in out/: unique metadata, canonical URLs, JSON-LD, sitemap, robots.txt, and .nojekyll.`
+  `SEO & semantic checks passed for ${urls.length} static pages in out/: unique metadata, canonical URLs, semantic landmarks, heading hierarchy, JSON-LD, sitemap, robots.txt, and .nojekyll.`
 );

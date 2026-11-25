@@ -27,6 +27,7 @@ export async function generateMetadata({
     description: item.summary,
     pathname: `/infrastructure/${item.slug}/`,
     ogType: "article",
+    keywords: [item.title, item.category, ...item.technologies],
   });
 }
 
@@ -149,7 +150,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <JsonLd data={buildCaseStudyJsonLd(item, pageTitle)} />
 
       <header className="infra-hero">
-        <div className="container">
+        <div className="site-container">
           <Link className="infra-back" href="/infrastructure/">
             ← All case studies
           </Link>
@@ -158,24 +159,28 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </p>
           <h1>{item.title}</h1>
           <p className="infra-intro">{item.summary}</p>
-          <div className="infra-tags">
+          <ul className="infra-tags" aria-label="Technologies">
             {item.technologies.map((tech) => (
-              <span key={tech}>{tech}</span>
+              <li key={tech}>{tech}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </header>
 
-      <div className="container case-layout">
+      <div className="site-container case-layout">
         <aside className="case-sidebar">
           <nav aria-label="On this page">
             <p className="section-kicker">ON THIS PAGE</p>
-            {sections.map((section, i) => (
-              <a key={section.id} href={`#${section.id}`}>
-                <span>0{i + 1}</span>
-                {section.title}
-              </a>
-            ))}
+            <ul className="case-toc-list">
+              {sections.map((section, i) => (
+                <li key={section.id}>
+                  <a href={`#${section.id}`}>
+                    <span>0{i + 1}</span>
+                    {section.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
         </aside>
 
@@ -184,12 +189,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <section
               key={section.id}
               id={section.id}
+              aria-labelledby={`${section.id}-heading`}
               className={`case-section${section.isResults ? " case-results" : ""}`}
             >
               <p className="section-kicker">
                 0{i + 1} / {section.id.toUpperCase()}
               </p>
-              <h2>{section.title}</h2>
+              <h2 id={`${section.id}-heading`}>{section.title}</h2>
               {section.content}
             </section>
           ))}
