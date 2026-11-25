@@ -165,7 +165,7 @@ export const portfolioData: PortfolioData = {
     {
       title: "IoT Developer",
       company: "XL Axiata IoT",
-      type: "Internship",
+      type: "Contract",
       date: "Jun 2021 - Nov 2021 · 6 mos",
       location: "Jakarta, Indonesia",
       description:
