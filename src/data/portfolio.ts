@@ -50,6 +50,16 @@ export const portfolioData: PortfolioData = {
       style: "primary",
     },
     {
+      name: "Node Js",
+      icon: "fab fa-node",
+      style: "primary",
+    },
+    {
+      name: "NestJs",
+      icon: "fab fa-nestjs",
+      style: "primary",
+    },
+    {
       name: "CodeIgniter",
       icon: "fas fa-fire",
       style: "primary",
